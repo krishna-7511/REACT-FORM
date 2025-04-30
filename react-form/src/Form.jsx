@@ -73,3 +73,37 @@ export default function Form() {
     </>
   );
 }
+
+/*
+       import { useState } from "react";
+
+export default function Form() {
+    let [fullname, setfullName] = useState("");
+     let [userName,setuserName] = useState("krishna");
+
+     const handlefullName=(event)=>{
+        console.log("Fullanme",event.target.value);
+     }
+  const handleuserName = (event) => {
+    console.log("username",event.target.value);  // Update state
+  };
+
+  return (
+    <form>
+      <input
+        placeholder="Enter fullname"
+        type="text"
+        value={fullname}
+        onChange={handlefullName}/>
+        <br/>
+        <input
+        placeholder="Enter userName"
+        type="text"
+        value={userName}
+        onChange={handleuserName}
+      />
+      <button type="submit">Submit</button>
+    </form>
+  );
+}
+*/
