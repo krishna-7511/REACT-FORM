@@ -1,18 +1,21 @@
 import { useState } from "react";
 
-export default function CommentForm() {
+export default function CommentForm({ addNewComment }) {
   let [formData, setFormData] = useState({
     username: "",
-    remark: "",
+    remarks: "",
     rating: "",
   });
+
   let handleInputChange = (event) => {
     setFormData((currData) => {
       return { ...currData, [event.target.name]: event.target.value };
     });
   };
+
+ 
   let handleSubmit = (event) => {
-    console.log(formData);
+    addNewComment(formData);
     event.preventDefault();
     setFormData({
       username: "",
@@ -20,10 +23,11 @@ export default function CommentForm() {
       rating: "",
     });
   };
+
   return (
     <>
       <h4>Give a Comment!</h4>
-      <form action="" onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit}>
         <label htmlFor="username">Username: &nbsp;</label>
         <input
           id="username"
@@ -33,22 +37,18 @@ export default function CommentForm() {
           value={formData.username}
           name="username"
         />
-        <br />
-        <br />
-        <label htmlFor="remark">Remark: &nbsp;</label>
+        <br /><br />
+        <label htmlFor="remarks">Remark: &nbsp;</label>
         <textarea
-          name="remark"
-          id="remark"
+          name="remarks"
+          id="remarks"
           cols="30"
-          rows="10"
+          rows="3"
           onChange={handleInputChange}
-          value={formData.remark}
-          placeholder="add a remarks"
-        >
-          Remarks
-        </textarea>
-        <br />
-        <br />
+          value={formData.remarks}
+          placeholder="Add a remark"
+        />
+        <br /><br />
         <label htmlFor="rating">Rating: &nbsp;</label>
         <input
           id="rating"
@@ -60,9 +60,8 @@ export default function CommentForm() {
           value={formData.rating}
           name="rating"
         />
-        <br />
-        <br />
-        <button>Add Comment</button>
+        <br /><br />
+        <button type="submit">Add Comment</button>
       </form>
     </>
   );
